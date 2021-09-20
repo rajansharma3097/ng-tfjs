@@ -15,7 +15,9 @@ export class AppComponent implements AfterViewInit {
   @ViewChild('about') aboutLink: ElementRef<HTMLAnchorElement>;
 
   opened$ = this._recognizer.swipe$.pipe(
-    tap((value) => { console.log(value) }),
+    tap((value) => {
+      console.log(value);
+    }),
     filter((value) => value === 'left' || value === 'right'),
     map((value) => value === 'right')
   );
@@ -28,7 +30,9 @@ export class AppComponent implements AfterViewInit {
   constructor(private _recognizer: HandGesture, private _router: Router) {
     this._recognizer.gesture$
       .pipe(
-        tap((value) => { console.log(value) }),
+        tap((value) => {
+          console.log(value);
+        }),
         filter((value) => value === 'ok'),
         withLatestFrom(this.selection$)
       )
